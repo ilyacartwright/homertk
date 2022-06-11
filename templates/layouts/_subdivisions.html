@@ -1,28 +1,38 @@
+{% load options %}
 <div class="brand-area section" id="subdivisions">
     <div class="container">
         <div class="row">
             <div class="col-lg-5 col-12">
                 <div class="section-title align-left wow fadeInLeft" data-wow-delay=".2s">
-                    <span>Подразделения</span>
-                    <h2>ТРК состоит из 4 подразделений</h2>
-                    <p>ТРК "Advance Mass Media" состоит из 4 подразделений. В каждом городе есть по одному радиоцентру, а так же в городе Лос-Сантос - Телецентр.</p>
+                    <span>{% get_editable_label 'SUBDIVISIONS' %}</span>
+                    {% get_editable_text 'SUBDIVISIONS' 'title' 'text' %}
+                    <h2>{{ title }}</h2>
+                    <p>{{ text }}</p>
                 </div>
             </div>
             <div class="col-lg-7 col-12">
                 <div class="brand-logo-wrapper wow fadeInRight" data-wow-delay=".4s">
                     <ul class="brand-list liststyle d-flex flex-wrap justify-content-center">
-                        <li><a href="https://forum.advance-rp.ru/forums/radiocentr-ls.43/" target="_blank">
-                                Радиоцентр LS
-                            </a></li>
-                        <li><a href="https://forum.advance-rp.ru/forums/radiocentr-sf.44/">
-                                Радиоцентр SF
-                            </a></li>
-                        <li><a href="https://forum.advance-rp.ru/forums/radiocentr-lv.45/">
-                                Радиоцентр LV
-                            </a></li>
-                        <li><a href="https://forum.advance-rp.ru/forums/telecentr.42/">
-                                Телецентр
-                            </a></li>
+                        <li>
+                            <a href="{% get_option 'LSFM' %}" target="_blank">
+                                {% get_label 'LSFM' %}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% get_option 'SFFM' %}" target="_blank">
+                                {% get_label 'SFFM' %}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% get_option 'LVFM' %}" target="_blank">
+                                {% get_label 'LVFM' %}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% get_option 'TV-C' %}" target="_blank">
+                                {% get_label 'TV-C' %}
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>

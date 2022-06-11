@@ -1,13 +1,14 @@
-{% load static %}
+{% load static options %}
 <section class="about-us section" id="departmens">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-12">
                 <div class="about-left">
                     <div class="section-title align-left">
-                        <span class="wow fadeInDown" data-wow-delay=".2s">Отделы</span>
-                        <h2 class="wow fadeInUp" data-wow-delay=".4s">Отделы Телерадиокомпании</h2>
-                        <p class="wow fadeInUp" data-wow-delay=".6s">По базовым нормам ТРК, у каждом подразделении может есть три отдела, но некоторые Директора имееют права их убирать. У Телецентра название отделов отличаются, но общий смысл схож.</p>
+                        <span class="wow fadeInDown" data-wow-delay=".2s">{% get_editable_label 'DEPARTMENS' %}</span>
+                        {% get_editable_text 'DEPARTMENS' 'title' 'text' %}
+                        <h2 class="wow fadeInUp" data-wow-delay=".4s">{{ title }}</h2>
+                        <p class="wow fadeInUp" data-wow-delay=".6s">{{ text }}</p>
                     </div>
                     <div class="about-tab wow fadeInUp" data-wow-delay=".4s">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">

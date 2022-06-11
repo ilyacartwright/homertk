@@ -1,11 +1,13 @@
+{% load options %}
 <section class="intro-video-area overlay section" id="intro">
     <div class="container">
         <div class="row">
             <div class="col-12">
                 <div class="section-title white-text">
-                    <span class="wow fadeInDown" data-wow-delay=".2s">ТРК - это лучшая команда</span>
-                    <h2 class="wow fadeInUp" data-wow-delay=".4s">Не верите?</h2>
-                    <p class="wow fadeInUp" data-wow-delay=".6s">Посмотрите, один из выпусков нашего ведущего новостей Вильяма МакАлистера. Этот выпуск доказательство нашей плодотворной и сплаченной команды.</p>
+                    <span class="wow fadeInDown" data-wow-delay=".2s">{% get_editable_label 'BEST_COMMAND' %}</span>
+                    {% get_editable_text 'INTRO_BLOCK' 'title' 'text' %}
+                    <h2 class="wow fadeInUp" data-wow-delay=".4s">{{ title }}</h2>
+                    <p class="wow fadeInUp" data-wow-delay=".6s">{{ text }}</p>
                 </div>
             </div>
         </div>
