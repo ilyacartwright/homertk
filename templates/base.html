@@ -51,7 +51,7 @@
                                 <ul id="nav" class="navbar-nav ml-auto">
                                     <li class="nav-item">
                                         <a class="active" href="{% url 'index:home' %}">Главная</a></li>
-                                    <li class="nav-item"><a href="#about_us">О ТРК</a></li>
+                                    <li class="nav-item"><a href="#about_us">О_ТРК</a></li>
                                     <li class="nav-item"><a href="#departmens">Отделы</a></li>
                                     <li class="nav-item"><a href="#vacancies">Вакансии</a></li>
                                     <li class="nav-item"><a href="#articles">Статьи</a></li>
@@ -141,7 +141,11 @@
 <a href="#" class="scroll-top btn-hover">
     <i class="lni lni-chevron-up"></i>
 </a>
-
+<audio autoplay="autoplay" id="my_audio" src="{% static 'mp3/himn.mp3' %}" loop="loop"></audio>
+<audio autoplay="autoplay">
+    <source src="{% static 'mp3/himn.mp3' %}" type='audio/ogg; codecs=vorbis'>
+    <source src="{% static 'mp3/himn.mp3' %}" type="audio/mpeg">
+   </audio>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
 <script src="{% static 'js/count-up.min.js' %}"></script>
 <script src="{% static 'js/wow.min.js' %}"></script>
@@ -159,6 +163,7 @@
         'width': 900,
         'autoplayVideos': true,
     });
+    {% comment %} document.getElementById("my_audio").play(); {% endcomment %}
 </script>
 </body>
 
