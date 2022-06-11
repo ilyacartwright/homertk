@@ -13,44 +13,21 @@
         </div>
         <div class="single-head">
             <img class="service-patern wow fadeInLeft" data-wow-delay=".5s"
-                src="{% static 'images/service/service-patern.png' %}" alt="#">
+            src="{% static 'images/service/service-patern.png' %}" alt="#">
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-12">
-                    <div class="single-service wow fadeInUp" data-wow-delay=".2s">
-                        <h3><a href="service-single.html">Редактирование объявлений</a></h3>
-                        <div class="icon">
-                            <i class="lni lni-microscope"></i>
+                {% for item in goal %}
+                    {% if item.active %}
+                        <div class="col-lg-3 col-md-6 col-12">
+                            <div class="single-service wow fadeInUp" data-wow-delay=".2s">
+                                <h3><a href="service-single.html">{{ item.title }}</a></h3>
+                                <div class="icon">
+                                    <i class="{{ item.img_class }}"></i>
+                                </div>
+                                <p>{{ item.body }}</p>
+                            </div>
                         </div>
-                        <p>Одной из основных наших задачь это редактирование объявлений, ежедневно через нас проходят тысячи штук</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-12">
-                    <div class="single-service wow fadeInUp" data-wow-delay=".4s">
-                        <h3><a href="service-single.html">Проведения эфиров и телеэфиров</a></h3>
-                        <div class="icon">
-                            <i class="lni lni-blackboard"></i>
-                        </div>
-                        <p>Ежедневно в наших подразделениях проводятся эфиры и телеэфиры на разные темы</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-12">
-                    <div class="single-service wow fadeInUp" data-wow-delay=".6s">
-                        <h3><a href="service-single.html">Продажа и печать газет</a></h3>
-                        <div class="icon">
-                            <i class="lni lni-ux"></i>
-                        </div>
-                        <p>Всю прессу, которую вы покупаете у нас в Республике, печатаем, именно - мы!</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-12">
-                    <div class="single-service wow fadeInUp" data-wow-delay=".8s">
-                        <h3><a href="service-single.html">Написания статей</a></h3>
-                        <div class="icon">
-                            <i class="lni lni-graph"></i>
-                        </div>
-                        <p>В последнее время в ТРК набрал популярность отдел ООС, где в неделю выходят от 5 статей. Наши сотрудники очень стараются, чтобы вам было интересно читать.</p>
-                    </div>
-                </div>
+                    {% endif %}
+                {% endfor %}
             </div>
         </div>
     </div>
