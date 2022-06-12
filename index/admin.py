@@ -1,3 +1,6 @@
 from django.contrib import admin
+from .models import CompanyGoal
 
-# Register your models here.
+@admin.register(CompanyGoal)
+class CompanyGoalAdmin(admin.ModelAdmin):
+    list_display = ('title', 'body', 'active')
