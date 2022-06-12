@@ -12,56 +12,27 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-4 col-md-6 col-12">
-
-                <div class="single-news wow fadeInUp" data-wow-delay=".2s">
-                    <div class="image">
-                        <img class="thumb" src="{% static 'images/blog/blog-grid1.jpg' %}" alt="#">
-                        <div class="meta-details">
-                            <img src="{% static 'images/blog/author.jpg' %}" alt="#"> <span>Fred Fakers | TV-C</span>
+            {% for item in news %}
+                <div class="col-lg-4 col-md-6 col-12">
+                    <div class="single-news wow fadeInUp" data-wow-delay=".2s">
+                        {% if item.image %}
+                            <div class="image">
+                                <img class="thumb" src="{{ item.image.url }}" alt="#">
+                                <div class="meta-details">
+                                    <img src="{% static 'images/blog/author.jpg' %}" alt="#"> <span>{{ item.author }} | {{ item.podr }}</span>
+                                </div>
+                            </div>
+                        {% endif %}
+                        <div class="content-body">
+                            <h4 class="title"><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></h4>
+                            <p>{{ item.content_short|safe }} </p>
                         </div>
                     </div>
-                    <div class="content-body">
-                        <h4 class="title"><a href="# ">Рыбалка</a></h4>
-                        <p>Сегодня мы с вами поговорим о рыбалке, а именно о той которая находится на пирсе г. Los-Santos на пляже Santa-Maria. С начала мая рыбаки начали ловить рыбу на маленьких ставках, реках и т.п. </p>
-                    </div>
                 </div>
+            {% endfor %}
 
-            </div>
-            <div class="col-lg-4 col-md-6 col-12">
-
-                <div class="single-news wow fadeInUp" data-wow-delay=".4s">
-                    <div class="image">
-                        <img class="thumb" src="{% static 'images/blog/blog-grid2.jpg' %}" alt="#">
-                        <div class="meta-details">
-                            <img src="{% static 'images/blog/author.jpg' %}" alt="#"> <span>Toni CartWright | SFFM</span>
-                        </div>
-                    </div>
-                    <div class="content-body">
-                        <h4 class="title"><a href="#">Убийство в Сан-Фиерро</a></h4>
-                        <p>Сегодня утром просматривая свои каналы, Директор Радиоцентра наткнулся на информацию, что сегодня произошло убийство в городе. Взял камеру, машину и поехал.</p>
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-lg-4 col-md-6 col-12">
-
-                <div class="single-news wow fadeInUp" data-wow-delay=".6s">
-                    <div class="image">
-                        <img class="thumb" src="{% static 'images/blog/blog-grid3.jpg' %}" alt="#">
-                        <div class="meta-details">
-                            <img src="{% static 'images/blog/author.jpg' %}" alt="#"> <span>Daniel Liddell | TV-C</span>
-                        </div>
-                    </div>
-                    <div class="content-body">
-                        <h4 class="title"><a href="#">Empire of Ackerman насилуют детей?</a></h4>
-                        <p>Сегодня утром произошло очень страшное происшествие. Один человек из очень значимой семьи под названием Ackerman Family изнасиловал маленькую девочку. Ситуация прошла возле Больницы Las-Venturas. </p>
-                    </div>
-                </div>
-
-            </div>
             <div class="button d-flex justify-content-center mt-5">
-                <a class="btn" href="#">Посмотреть всё</a>
+                <a class="btn" href="/news">Посмотреть всё</a>
             </div>
         </div>
     </div>

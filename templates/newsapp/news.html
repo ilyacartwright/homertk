@@ -1,0 +1,47 @@
+{% extends 'newsapp/layouts.html' %}
+{% load static options %}
+{% block newsapp_content %}
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 col-12">
+                <div class="breadcrumbs-content">
+                    <h1 class="page-title">Статьи</h1>
+                </div>
+                <ul class="breadcrumb-nav">
+                    <li><a href="{% url 'index:home' %}">Главная</a></li>
+                    <li>Статьи</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="latest-news-area section" id="articles">
+    <div class="container">
+        <div class="row">
+            {% if news_list %}
+                {% for item in news_list.object_list %}
+                    <div class="col-lg-4 col-md-6 col-12 mb-5 mt-5">
+                        <div class="single-news wow fadeInUp" data-wow-delay=".2s">
+                            {% if item.image %}
+                                <div class="image">
+                                    <img class="thumb" src="{{ item.image.url }}" alt="#">
+                                    <div class="meta-details">
+                                        <img src="{% static 'images/blog/author.jpg' %}" alt="#"> <span>{{ item.author }} | {{ item.podr }}</span>
+                                    </div>
+                                </div>
+                            {% endif %}
+                            <div class="content-body">
+                                <h4 class="title"><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></h4>
+                                <p>{{ item.content_short|safe }} </p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+            
+        </div>
+    </div>
+</div>
+{% endblock newsapp_content %}

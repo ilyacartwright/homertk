@@ -30,8 +30,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'easy_thumbnails',
+    'ckeditor',
+    'ckeditor_uploader',
+
     'options',
     'index',
+    'newsapp',
 ]
 
 MIDDLEWARE = [
@@ -47,6 +52,20 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'home.urls'
 
 
+NEWSAPP_ENABLE_TAGS = True
+NEWSAPP_ENABLE_CATEGORIES = True
+NEWSAPP_ENABLE_ARCHIVE = True
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_BROWSE_SHOW_DIRS = True
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'height': 300,
+        'width': 900,
+    },
+}
+
 
 TEMPLATES = [
     {
@@ -58,6 +77,7 @@ TEMPLATES = [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.template.context_processors.static',
+                'django.template.context_processors.media',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
@@ -112,12 +132,13 @@ USE_I18N = True
 USE_TZ = True
 
 
-
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'stat')
+
 STATICFILES_DIRS = [
-    # os.path.join(BASE_DIR, 'assets', 'dist'),
     os.path.join(BASE_DIR, 'static'),
 ]
 

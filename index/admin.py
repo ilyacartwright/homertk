@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import CompanyGoal, Deparment, DeparmentList, Footer, FooterList
+from .models import CompanyGoal, Deparment, DeparmentList, Footer, FooterList, Vakance, VakanceCriteria
 
 @admin.register(CompanyGoal)
 class CompanyGoalAdmin(admin.ModelAdmin):
@@ -24,3 +24,13 @@ class FooterListInline(admin.TabularInline):
 class FooterAdmin(admin.ModelAdmin):
     list_display = ('title', 'active')
     inlines = [FooterListInline]
+
+class VakanceCriteriaInline(admin.TabularInline):
+
+    model = VakanceCriteria
+    extra = 1
+
+@admin.register(Vakance)
+class VakanceAdmin(admin.ModelAdmin):
+    list_display = ('title', 'active')
+    inlines = [VakanceCriteriaInline]

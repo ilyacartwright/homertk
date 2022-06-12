@@ -41,3 +41,19 @@ class FooterList(models.Model):
     title = models.CharField('Название', max_length=256)
     link = models.CharField('Ссылка', max_length=356)
     footer = models.ForeignKey('Footer', on_delete=models.PROTECT, blank=True, null=True)
+
+class Vakance(models.Model):
+    title = models.CharField('Название', max_length=256)
+    salary = models.CharField('Зарплата', max_length=10 )
+    link = models.CharField('Ссылка', max_length=356)
+    active = models.BooleanField('Активный?', default=False)
+
+    class Meta:
+        verbose_name = 'Вакансия'
+        verbose_name_plural = "Вакансии"
+
+class VakanceCriteria(models.Model):
+    vakance = models.ForeignKey('Vakance', on_delete=models.PROTECT, blank=True, null=True)
+    title = models.CharField('Название', max_length=256)
+
+    
