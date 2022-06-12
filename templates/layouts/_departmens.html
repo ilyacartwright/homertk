@@ -12,41 +12,32 @@
                     </div>
                     <div class="about-tab wow fadeInUp" data-wow-delay=".4s">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
-                            <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#t-tab1"
-                                    role="tab">Фоторепортажи</a></li>
-                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#t-tab2"
-                                    role="tab">Эфиры</a></li>
-                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#t-tab3"
-                                    role="tab">Печать</a></li>
+                            {% for item in deparment %}
+                                {% if item.active %}
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-toggle="tab" href="#t-tab{{ forloop.counter }}"
+                                        role="tab">{{ item.title }}</a>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}                           
                         </ul>
                         <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active" id="t-tab1" role="tabpanel">
-                                <div class="tab-content">
-                                    <p>
-                                        Когда вы берете в руки камеру, фотографируете, что либо, а потом пишете об этом пару строк в журнал - это уже называеться фоторепортаж. Многие сотрудники считают, что это самый легкий отдел в ТРК, но то, что кажеться легким - чаще всего им не является.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="t-tab2" role="tabpanel">
-                                <div class="tab-content">
-                                    <p>
-                                        Отдел эфиров, всегда считался самым интересным и самым тяжелым. Вот тут есть, где разгуляться, столько видов проведения эфиров можно придумать, что глаза разбегаются, но когда приходит время подготовки к эфиру... ты понимаешь на сколько это сложно.
-                                    </p>
-                                    <p>Некоторые виды эфиров:</p>
-                                    <ul>
-                                        <li><i class="lni lni-checkmark-circle"></i>Информационные эфиры</li>
-                                        <li><i class="lni lni-checkmark-circle"></i>Интерактивные эфиры</li>
-                                        <li><i class="lni lni-checkmark-circle"></i>Познавательные эфиры</li>
-                                        <li><i class="lni lni-checkmark-circle"></i>Развлекательные эфиры</li>
-                                        <li><i class="lni lni-checkmark-circle"></i>Эфиры-мероприятия</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="t-tab3" role="tabpanel">
-                                <div class="tab-content">
-                                    <p>Отдел печати по началу кажеться - очень скучным, но когда ты перестаешь продавать газеты, а начинаешь их сам писать у тебя сразу появляеться бешенный азарт. В пример, могу привести абсолютных рекордсменов по газетам это Ричард Коннолли и Юлия Даллаз - они за Директорский 30-дневный срок Ричарда, совместно написали 29 газет.</p>
-                                </div>
-                            </div>
+                            {% for item in deparment %}
+                                {% if item.active %}
+                                    <div class="tab-pane fade" id="t-tab{{ forloop.counter }}" role="tabpanel">
+                                        <div class="tab-content">
+                                            {{ item.body|safe }}
+                                            {% if item.show_list %}
+                                            <ul>
+                                                {% for items in item.deparmentlist_set.all %}
+                                                <li><i class="lni lni-checkmark-circle"></i>{{ items.punkt }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
                         </div>
                     </div>
                 </div>

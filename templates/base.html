@@ -89,34 +89,20 @@
                         <p>{% get_editable_label 'COMPANY_SLOGAN' %}</p>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-12">
-                    <div class="single-footer f-link">
-                        <h3>Страницы</h3>
-                        <ul>
-                            <li><a href="#">Статьи</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-12">
-                    <div class="single-footer f-link">
-                        <h3>Мы на гос. портале</h3>
-                        <ul>
-                            <li><a href="#">Кабинет Управляющего</a></li>
-                            <li><a href="#">Устав СМИ, П.Р.О., П.П.Э</a></li>
-                            <li><a href="#">Информация по СМИ</a></li>
-                            <li><a href="#">Общие правила СМИ </a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-12">
-                    <div class="single-footer f-link">
-                        <h3>Наши другие сервисы</h3>
-                        <ul>
-                            <li><a href="#">Социальная сеть</a></li>
-                            <li><a href="#">Электронные заявления</a></li>
-                        </ul>
-                    </div>
-                </div>
+                {% for item in footer %}
+                    {% if item.active %}
+                        <div class="col-lg-3 col-md-6 col-12">
+                            <div class="single-footer f-link">
+                                <h3>{{ item.title }}</h3>
+                                <ul>
+                                    {% for item in item.footerlist_set.all %}
+                                    <li><a href="{{ item.link }}">{{ item.title }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
             </div>
         </div>
     </div>
