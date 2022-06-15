@@ -17,6 +17,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+STATICFILES_FINDERS = [
+  'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+  'django.contrib.staticfiles.finders.FileSystemFinder',
+]
 
 # Application definition
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'

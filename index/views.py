@@ -22,6 +22,12 @@ def render_index_page(request):
         }
     )
 
+def page_not_found_view(request, exception):
+    footer = Footer.objects.all()
+    return render(request, '404.html',  {
+        'footer': footer,
+    }, status=404)
+
 # class HomePage(TemplateView):
 #     template_name = "page/home.html"
 
