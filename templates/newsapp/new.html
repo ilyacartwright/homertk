@@ -1,0 +1,44 @@
+{% extends 'newsapp/layouts.html' %}
+
+{% block newsapp_content %}
+
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 col-12">
+                <div class="breadcrumbs-content">
+                    <h1 class="page-title">{{ item.title }}</h1>
+                </div>
+                <ul class="breadcrumb-nav">
+                    <li><a href="{% url 'index:home' %}">Главная</a></li>
+                    <li><a href="/news">Статьи</a></li>
+                    <li>{{ item.title }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% load static options %}
+<div class="latest-news-area section" id="articles">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-title">
+                    <h2 class="wow fadeInUp" data-wow-delay=".4s">{{ item.title }}</h2>
+                    <p class="wow fadeInUp" data-wow-delay=".6s">{{ item.author }} | {{ item.podr }} | {{ item.date_added }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {{ item.content|safe }}
+
+            <div class="button d-flex justify-content-center mt-5">
+                <a class="btn" href="/news">Список статей</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock newsapp_content %}
+
