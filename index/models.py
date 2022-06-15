@@ -1,4 +1,5 @@
 from django.db import models
+from ckeditor.fields import RichTextField
 
 class CompanyGoal(models.Model):
     title = models.CharField('Название', max_length=256)
