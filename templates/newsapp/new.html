@@ -28,12 +28,36 @@
                 <div class="section-title">
                     <h2 class="wow fadeInUp" data-wow-delay=".4s">{{ item.title }}</h2>
                     <p class="wow fadeInUp" data-wow-delay=".6s">{{ item.author }} | {{ item.podr }} | {{ item.date_added }}</p>
+                    {% with item.new_category.all as categories %}
+                        {% for category in categories %}
+                            <br><b><p class="wow fadeInUp" style="color: green;" data-wow-delay=".6s">{{ category.title }}</p></b>
+                        {% endfor %}
+                    {% endwith %}
                 </div>
             </div>
         </div>
         <div class="row">
             {{ item.content|safe }}
-
+            
+            
+            {% for item in item.managercheck_set.all %}
+            <div class="alert text-center mt-5 {% if item.approved %}alert-success{% else %}alert-danger{% endif %}" role="alert">
+                <p>
+                    Ответ Управляющего СМИ {{ item.nick }}: 
+                    {% if item.approved %}
+                        <span style="color: green">Одобрено.</span>
+                    {% else %}
+                        <span style="color: red">Отказано.</span>
+                    {% endif %}
+                </p>
+                {% if item.comment %}
+                    <p>Комментарий: {{ item.comment }}</p>
+                {% endif %}
+                {% if item.pay %}
+                    <p>Выплата за статью: {{ item.pay }}</p>
+                {% endif %}
+              </div>
+            {% endfor %}
             <div class="button d-flex justify-content-center mt-5">
                 <a class="btn" href="/news">Список статей</a>
             </div>

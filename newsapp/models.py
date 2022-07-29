@@ -70,7 +70,7 @@ class NewAbstract(models.Model):
     date_added = models.DateTimeField(_('date added'), default=datetime.datetime.today)
     active = models.BooleanField(_('active'), default=True)
     more_text = models.CharField(_('read more'), max_length=256, blank=True, help_text=_('read more button text'))
-    image = ThumbnailerImageField(_('image'), upload_to='news', resize_source=dict(size=(1024, 1024)), blank=True, null=True)
+    image = ThumbnailerImageField(_('image'), upload_to='news', resize_source=dict(size=(1024, 1024)))
     if ENABLE_CATEGORIES:
         new_category = models.ManyToManyField(NewCategory, verbose_name=_('new categories'))
     if ENABLE_TAGS:
@@ -126,3 +126,13 @@ class NewAbstract(models.Model):
 
 class New(class_for_name(NEWS_CLASS) if NEWS_CLASS else NewAbstract):
     pass
+
+class ManagerCheck(models.Model):
+    nick = models.CharField('Ник проверяющего', max_length=80)
+    approved = models.BooleanField('Одобрено', blank=True, null=True)
+    comment = models.CharField('Комментарий', max_length=500, blank=True, null=True)
+    pay = models.CharField('Выплата', max_length=30, blank=True, null=True)
+    new = models.ForeignKey('New', on_delete=models.PROTECT, blank=True, null=True)
+
+    class Meta:
+        verbose_name = 'Проверка управляющего'

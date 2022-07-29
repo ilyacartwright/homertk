@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.contrib import admin
-from newsapp.models import New
+from newsapp.models import New, ManagerCheck
 from django.conf import settings
 from django.utils.translation import gettext_lazy as _
 from .settings_newsapp import ENABLE_CATEGORIES, ENABLE_TAGS
@@ -45,10 +45,15 @@ if ENABLE_TAGS:
         list_editable = ('position',)
     admin.site.register(Tag, TagAdmin)
 
+class ManagerCheckInline(admin.TabularInline):
+
+    model = ManagerCheck
+    extra = 1
 
 class NewAdmin(ParentModel):
     list_display = ('title', 'date_added', 'active')
     prepopulated_fields = {"slug": ("title",)}
+    inlines = [ManagerCheckInline]
     date_hierarchy = 'date_added'
     formfield_overrides = news_formfield_overrides
     filter_horizontal = []

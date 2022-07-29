@@ -69,16 +69,7 @@ ROOT_URLCONF = 'home.urls'
 NEWSAPP_ENABLE_TAGS = True
 NEWSAPP_ENABLE_CATEGORIES = True
 NEWSAPP_ENABLE_ARCHIVE = True
-
-CKEDITOR_UPLOAD_PATH = "uploads/"
-CKEDITOR_BROWSE_SHOW_DIRS = True
-CKEDITOR_CONFIGS = {
-    'default': {
-        'toolbar': 'full',
-        'height': 300,
-        'width': 900,
-    },
-}
+NEWSAPP_NEWS_ON_PAGE = 9
 
 
 TEMPLATES = [
@@ -107,13 +98,26 @@ WSGI_APPLICATION = 'home.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+OPTIONS_CREATE_ITEMS = True
+
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'hometrk',
+        'USER': 'medici',
+        'PASSWORD': '1PvBeGfhasJw',
+        'HOST': '185.87.149.151',
+        'PORT': '',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators

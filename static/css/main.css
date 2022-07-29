@@ -1081,8 +1081,9 @@ ol {
 /* Pagination CSS */
 .pagination {
   text-align: left;
-  margin: 65px 0 0 0;
-  display: block;
+  margin: 10px 0 0 0;
+  display: flex;
+  justify-content: center;
 }
 
 .pagination.center {
@@ -1932,6 +1933,17 @@ ol {
   position: relative;
   background: #f6f9fc;
   overflow: hidden;
+}
+@media (max-width: 768px){
+  .hero-area{
+    padding-bottom: 20px;
+  }
+}
+
+@media (max-width: 385px){
+  .hero-area{
+    padding-bottom: 75px;
+  }
 }
 
 .hero-area .hero-inner {
